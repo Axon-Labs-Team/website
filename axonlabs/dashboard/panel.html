@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de proyectos — Axon Labs</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="../assets/favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+<canvas id="fx-canvas" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<div id="panel-gate" class="panel-gate container">Verificando sesión…</div>
+
+<div id="panel-app" style="display:none;">
+  <header class="panel-topbar container">
+    <a href="../index.html" class="brand"><img src="../assets/logo-mark-alpha.png" alt="Axon Labs">Axon Labs</a>
+    <div class="panel-user">
+      <span id="panel-user-email"></span>
+      <button class="btn btn-ghost btn-sm" id="panel-logout">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="container panel-wrap">
+    <div class="section-head" style="margin-bottom:36px;">
+      <span class="eyebrow">Panel privado</span>
+      <h2 style="margin-top:14px;font-size:1.8rem;">Gestión de proyectos del portafolio</h2>
+      <p style="color:var(--text-dim);margin-top:12px;">Los cambios aquí se reflejan de inmediato en las páginas públicas de Inicio y Portafolio.</p>
+    </div>
+
+    <div class="panel-grid">
+      <div class="panel-card">
+        <h2 id="form-title">Añadir proyecto</h2>
+        <p class="sub">Completa los datos del proyecto. Marca "Demostrativo" si aún no es un cliente real.</p>
+        <form id="project-form">
+          <div class="field">
+            <label for="p-title">Título</label>
+            <input type="text" id="p-title" name="title" required>
+          </div>
+          <div class="field">
+            <label for="p-description">Descripción</label>
+            <textarea id="p-description" name="description" required></textarea>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="p-category">Categoría</label>
+              <input type="text" id="p-category" name="category" placeholder="Ej. Aplicación web">
+            </div>
+            <div class="field">
+              <label for="p-order">Orden</label>
+              <input type="number" id="p-order" name="order" value="0">
+            </div>
+          </div>
+          <div class="field">
+            <label for="p-tags">Etiquetas (separadas por coma)</label>
+            <input type="text" id="p-tags" name="tags" placeholder="React, Firebase, Automatización">
+          </div>
+          <div class="field">
+            <label for="p-image">URL de imagen (opcional)</label>
+            <input type="url" id="p-image" name="imageUrl" placeholder="https://...">
+          </div>
+          <div class="field">
+            <label for="p-link">Enlace del proyecto (opcional)</label>
+            <input type="url" id="p-link" name="link" placeholder="https://...">
+          </div>
+          <div class="field-check">
+            <input type="checkbox" id="p-demo" name="demo">
+            <label for="p-demo">Marcar como proyecto demostrativo</label>
+          </div>
+          <div class="field-check">
+            <input type="checkbox" id="p-featured" name="featured">
+            <label for="p-featured">Destacar en Inicio</label>
+          </div>
+          <div style="display:flex; gap:12px; margin-top:10px;">
+            <button type="submit" class="btn btn-primary" id="save-project" style="margin-top:16px;">Guardar proyecto</button>
+            <button type="button" class="btn btn-ghost" id="cancel-edit" style="margin-top:16px; display:none;">Cancelar edición</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel-card">
+        <h2>Proyectos publicados</h2>
+        <p class="sub">Ordenados por el campo "orden".</p>
+        <div id="projects-list"></div>
+        <p id="projects-empty" style="display:none;color:var(--text-dim);font-size:.9rem;">Aún no hay proyectos publicados. Los visitantes verán proyectos demostrativos genéricos hasta que agregues el primero.</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="panel-toast"></div>
+
+<script src="../js/main.js"></script>
+<script type="module" src="panel.js"></script>
+</body>
+</html>
