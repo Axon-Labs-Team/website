@@ -32,6 +32,6 @@ isSupported().then((ok) => { if(ok) getAnalytics(app); }).catch(()=>{});
    contra la colección "admins".
    ------------------------------------------------------------ */
 export const ADMIN_EMAILS = [
-  "team@axonlabs.site",
+  "team.axonlabs@gmail.com",
   "info@axonlabs.site"
 ];
