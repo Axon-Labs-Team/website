@@ -1,0 +1,90 @@
+/* ============================================================
+   AXON LABS — pricing.css
+   Estilos para /planes.html (paquetes + mantenimiento)
+   ============================================================ */
+
+.rate-note{
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  font-family:var(--font-mono); font-size:.78rem; color:var(--text-faint);
+  margin-bottom:8px; text-align:center; flex-wrap:wrap;
+}
+
+.plan-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; align-items:stretch; }
+.plan-grid.plan-grid-4{ grid-template-columns:repeat(4,1fr); }
+@media (max-width:1100px){ .plan-grid, .plan-grid.plan-grid-4{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px){ .plan-grid, .plan-grid.plan-grid-4{ grid-template-columns:1fr; } }
+
+.plan-card{
+  position:relative;
+  display:flex; flex-direction:column;
+  background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg);
+  padding:30px 28px; transition:transform .45s var(--ease), border-color .45s var(--ease);
+}
+.plan-card:hover{ transform:translateY(-6px); border-color:rgba(0,229,255,.3); }
+.plan-card.recommended{ border-color:rgba(0,229,255,.45); background:#0D1119; }
+.plan-badge{
+  position:absolute; top:-13px; left:28px;
+  font-family:var(--font-mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.08em;
+  background:var(--grad-brand); color:#05070B; font-weight:700;
+  padding:6px 14px; border-radius:999px;
+}
+.plan-emoji{ font-size:1.6rem; line-height:1; margin-bottom:14px; display:block; }
+.plan-card h3{ font-size:1.25rem; margin-bottom:6px; }
+.plan-sub{ color:var(--text-dim); font-size:.86rem; margin-bottom:22px; min-height:38px; }
+
+.plan-price{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:22px; }
+.plan-price .cop{ font-family:var(--font-display); font-weight:700; font-size:1.5rem; color:var(--text); }
+.plan-price .cop small{ font-family:var(--font-mono); font-size:.7rem; color:var(--text-dim); font-weight:500; margin-left:2px; }
+.plan-price .usd{
+  font-family:var(--font-mono); font-size:.82rem; color:var(--cyan-2);
+  background:var(--surface); border:1px solid var(--border-strong); padding:4px 10px; border-radius:999px;
+}
+
+.plan-features{ flex:1; margin-bottom:20px; }
+.plan-features li{
+  position:relative; padding:9px 0 9px 26px; font-size:.88rem; color:var(--text-dim);
+  border-top:1px solid var(--border);
+}
+.plan-features li:first-child{ border-top:none; }
+.plan-features li::before{
+  content:'✓'; position:absolute; left:0; top:9px;
+  width:16px; height:16px; border-radius:50%;
+  background:var(--grad-brand-soft); color:var(--cyan-2);
+  font-size:.65rem; display:flex; align-items:center; justify-content:center; font-weight:700;
+}
+.plan-features li.intro{
+  color:var(--text); font-weight:600; padding-left:0; border-top:none;
+}
+.plan-features li.intro::before{ content:none; }
+
+.plan-market-note{
+  font-size:.78rem; color:var(--text-faint); font-style:italic;
+  border-top:1px dashed var(--border-strong); padding-top:14px; margin-bottom:20px;
+}
+
+.plan-card .btn{ width:100%; }
+
+/* Titanium / personalizado (sin lista de precio fija) */
+.plan-card.plan-open .plan-price .cop{ font-size:1.15rem; }
+
+/* ---------- Mantenimiento ---------- */
+.maint-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+@media (max-width:900px){ .maint-grid{ grid-template-columns:1fr; } }
+.maint-card{
+  background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg);
+  padding:30px 28px; transition:transform .45s var(--ease), border-color .45s var(--ease);
+}
+.maint-card:hover{ transform:translateY(-6px); border-color:rgba(111,61,255,.35); }
+.maint-card .plan-price{ margin-bottom:18px; }
+.maint-card .plan-price .cop{ font-size:1.3rem; }
+.maint-per{ font-family:var(--font-mono); font-size:.75rem; color:var(--text-faint); }
+
+/* ---------- Referidos ---------- */
+.referral-box{
+  border:1px dashed var(--border-strong); border-radius:var(--radius-lg);
+  padding:32px; text-align:center; background:var(--surface);
+}
+.referral-box h3{ font-size:1.2rem; margin-bottom:12px; }
+.referral-box p{ color:var(--text-dim); margin:0 auto; max-width:480px; }
+.referral-box ul{ margin-top:16px; display:inline-block; text-align:left; }
+.referral-box li{ color:var(--text-dim); font-size:.9rem; padding:6px 0; }
