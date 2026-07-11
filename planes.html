@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paquetes y planes — Axon Labs</title>
+<meta name="description" content="Paquetes de desarrollo web y planes de mantenimiento de Axon Labs, con precios en pesos colombianos y su equivalencia en dólares.">
+<link rel="canonical" href="https://axonlabs.site/planes.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Paquetes y planes — Axon Labs">
+<meta property="og:description" content="Paquetes de desarrollo web y planes de mantenimiento de Axon Labs.">
+<meta property="og:image" content="https://axonlabs.site/assets/og-image.png">
+<meta property="og:url" content="https://axonlabs.site/planes.html">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="assets/site.webmanifest">
+<meta name="theme-color" content="#05070B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/pricing.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<canvas id="fx-canvas" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand"><img src="assets/logo-mark-alpha.png" alt="Axon Labs">Axon Labs</a>
+    <nav class="nav-links" id="nav-links">
+      <a href="index.html" data-page="index.html">Inicio</a>
+      <a href="servicios.html" data-page="servicios.html">Servicios</a>
+      <a href="planes.html" data-page="planes.html">Planes</a>
+      <a href="portafolio.html" data-page="portafolio.html">Portafolio</a>
+      <a href="nosotros.html" data-page="nosotros.html">Nosotros</a>
+      <a href="faq.html" data-page="faq.html">FAQ</a>
+      <a href="contacto.html" data-page="contacto.html">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="contacto.html#agendar" class="btn btn-ghost btn-sm">Agendar reunión</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Paquetes y planes</span>
+      <h1>Precios claros, sin sorpresas después</h1>
+      <p>Elige el paquete que se ajuste al tamaño de tu proyecto. Si no encaja en ninguno, también hacemos desarrollos 100% a medida.</p>
+      <p class="rate-note">1 USD ≈ 3.250 COP · tasa referencial, se actualiza periódicamente — el precio oficial de cotización siempre es el publicado en pesos colombianos.</p>
+    </div>
+  </section>
+
+  <!-- ============ PAQUETES ============ -->
+  <section id="paquetes">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Paquetes de desarrollo</span>
+        <h2>De una tienda simple a una plataforma completa</h2>
+        <p>Cada paquete incluye todo lo necesario para lanzar: sin costos ocultos ni "extras" que aparecen después.</p>
+      </div>
+
+      <div class="plan-grid plan-grid-4">
+
+        <!-- Shopify -->
+        <div class="plan-card reveal">
+          <span class="plan-emoji">🛒</span>
+          <h3>Shopify</h3>
+          <p class="plan-sub">Tienda online lista para vender, sin fricciones técnicas.</p>
+          <div class="plan-price">
+            <span class="cop">450.000 <small>COP</small></span>
+            <span class="usd" data-cop="450000">≈ USD</span>
+          </div>
+          <ul class="plan-features">
+            <li>Diseño completamente personalizado</li>
+            <li>Configuración de Shopify</li>
+            <li>Configuración de dominio</li>
+            <li>Configuración SSL</li>
+            <li>Hasta 50 productos configurados</li>
+            <li>Organización por categorías y colecciones</li>
+            <li>Configuración de impuestos y envíos</li>
+            <li>Integración con WhatsApp</li>
+            <li>Integración Sistecrédito (si ya tienen aprobación)</li>
+            <li>Pasarela de pago (Wompi / Mercado Pago u otra compatible)</li>
+            <li>SEO básico y optimización móvil/PC</li>
+            <li>Capacitación (1 hora)</li>
+            <li>15 días de soporte tras la entrega</li>
+          </ul>
+          <p class="plan-market-note">Referencia de mercado: un montaje de Shopify con este alcance suele cotizarse entre $500 y $2.500 USD.</p>
+          <a href="#" class="btn btn-primary" data-wa-msg="Hola Axon Labs, me interesa el paquete Shopify (450.000 COP) para mi tienda.">Quiero este paquete</a>
+        </div>
+
+        <!-- Business -->
+        <div class="plan-card recommended reveal reveal-delay-1">
+          <span class="plan-badge">Más elegido</span>
+          <span class="plan-emoji">💼</span>
+          <h3>Business</h3>
+          <p class="plan-sub">Ideal para empresas que necesitan presencia digital completa.</p>
+          <div class="plan-price">
+            <span class="cop">650.000 <small>COP</small></span>
+            <span class="usd" data-cop="650000">≈ USD</span>
+          </div>
+          <ul class="plan-features">
+            <li class="intro">Todo Shopify (si aplica) +</li>
+            <li>Hasta 8 páginas (Inicio, Nosotros, Servicios, Contacto...)</li>
+            <li>Formulario de contacto</li>
+            <li>Google Maps integrado</li>
+            <li>Blog y galería</li>
+            <li>Integración con WhatsApp</li>
+            <li>Animaciones y microinteracciones</li>
+            <li>SEO, Google Search Console y Analytics</li>
+            <li>Optimización de velocidad</li>
+            <li>Configuración de dominio</li>
+            <li>30 días de soporte tras la entrega</li>
+          </ul>
+          <p class="plan-market-note">Referencia de mercado: sitios corporativos con este alcance suelen cotizarse entre $1.500 y $5.000 USD.</p>
+          <a href="#" class="btn btn-primary" data-wa-msg="Hola Axon Labs, me interesa el paquete Business (650.000 COP) para mi empresa.">Quiero este paquete</a>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="plan-card reveal reveal-delay-2">
+          <span class="plan-emoji">🏢</span>
+          <h3>Enterprise</h3>
+          <p class="plan-sub">Pensado para empresas con procesos internos que automatizar.</p>
+          <div class="plan-price">
+            <span class="cop">2.600.000 <small>COP</small></span>
+            <span class="usd" data-cop="2600000">≈ USD</span>
+          </div>
+          <ul class="plan-features">
+            <li class="intro">Todo Business +</li>
+            <li>Panel administrativo a medida</li>
+            <li>Base de datos</li>
+            <li>Gestión de usuarios y roles</li>
+            <li>Agenda y reservas</li>
+            <li>Dashboard con métricas</li>
+            <li>Automatizaciones de procesos</li>
+            <li>Correos corporativos</li>
+            <li>Capacitación completa del equipo</li>
+            <li>45 días de soporte tras la entrega</li>
+          </ul>
+          <p class="plan-market-note">Referencia de mercado: paneles administrativos a medida con este alcance suelen cotizarse entre $2.000 y $8.000 USD.</p>
+          <a href="#" class="btn btn-primary" data-wa-msg="Hola Axon Labs, me interesa el paquete Enterprise (2.600.000 COP) para mi empresa.">Quiero este paquete</a>
+        </div>
+
+        <!-- Titanium -->
+        <div class="plan-card plan-open reveal reveal-delay-3">
+          <span class="plan-emoji">💎</span>
+          <h3>Titanium</h3>
+          <p class="plan-sub">Para proyectos completamente personalizados: CRM, ERP, marketplace, SaaS, dashboards, APIs.</p>
+          <div class="plan-price">
+            <span class="cop">Desde 6.000.000 <small>COP</small></span>
+            <span class="usd" data-cop="6000000" data-prefix="≈ desde">≈ desde USD</span>
+          </div>
+          <ul class="plan-features">
+            <li>CRM, ERP o marketplace a medida</li>
+            <li>Plataformas SaaS y dashboards</li>
+            <li>APIs, integraciones y automatizaciones complejas</li>
+            <li>Arquitectura y alcance definidos en una propuesta técnica previa</li>
+          </ul>
+          <p class="plan-market-note">Referencia de mercado: proyectos de este tipo parten normalmente desde $3.000 USD y pueden superar los $15.000 USD según el alcance.</p>
+          <a href="#" class="btn btn-primary" data-wa-msg="Hola Axon Labs, tengo un proyecto tipo Titanium (CRM/ERP/SaaS/marketplace) y quisiera una cotización.">Cotización personalizada</a>
+        </div>
+
+      </div>
+
+      <div class="reveal" style="margin-top:32px;">
+        <div class="cta-final" style="padding:48px 36px;">
+          <span class="eyebrow" style="justify-content:center;">🚀 Personalizado</span>
+          <h2 style="margin-top:12px;font-size:1.6rem;">¿Tu proyecto no encaja en ningún paquete?</h2>
+          <p style="margin:14px auto 28px;">También hacemos desarrollos completamente a medida cuando lo que necesitas no entra en un paquete estándar. Cuéntanos qué necesitas y armamos una propuesta específica.</p>
+          <a href="#" class="btn btn-ghost" data-wa-msg="Hola Axon Labs, necesito algo que no encaja en los paquetes publicados. Les cuento mi proyecto:">Contarles mi proyecto</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider container">
+
+  <!-- ============ MANTENIMIENTO ============ -->
+  <section id="mantenimiento">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">🔧 Planes de mantenimiento</span>
+        <h2>Que tu sitio siga funcionando bien después del lanzamiento</h2>
+        <p>Ideal para empresas que necesitan hacer cambios frecuentes sin contratar un desarrollo nuevo cada vez.</p>
+      </div>
+
+      <div class="maint-grid">
+        <div class="maint-card reveal">
+          <span class="plan-emoji">🥉</span>
+          <h3>Starter</h3>
+          <div class="plan-price">
+            <span class="cop">50.000 <small>COP</small></span>
+            <span class="usd" data-cop="50000">≈ USD</span>
+          </div>
+          <span class="maint-per">/ mes</span>
+          <ul class="plan-features" style="margin-top:18px;">
+            <li>Hasta 2 cambios al mes</li>
+            <li>Corrección de errores</li>
+            <li>Soporte por WhatsApp</li>
+          </ul>
+          <a href="#" class="btn btn-ghost" data-wa-msg="Hola Axon Labs, me interesa el plan de mantenimiento Starter (50.000 COP/mes).">Quiero este plan</a>
+        </div>
+
+        <div class="maint-card reveal reveal-delay-1">
+          <span class="plan-emoji">🥈</span>
+          <h3>Business</h3>
+          <div class="plan-price">
+            <span class="cop">100.000 <small>COP</small></span>
+            <span class="usd" data-cop="100000">≈ USD</span>
+          </div>
+          <span class="maint-per">/ mes</span>
+          <ul class="plan-features" style="margin-top:18px;">
+            <li>Hasta 10 cambios al mes</li>
+            <li>Nuevos productos</li>
+            <li>Cambios de precios y banners</li>
+            <li>Soporte prioritario</li>
+            <li>Revisión mensual</li>
+          </ul>
+          <a href="#" class="btn btn-ghost" data-wa-msg="Hola Axon Labs, me interesa el plan de mantenimiento Business (100.000 COP/mes).">Quiero este plan</a>
+        </div>
+
+        <div class="maint-card reveal reveal-delay-2">
+          <span class="plan-emoji">🥇</span>
+          <h3>Enterprise</h3>
+          <div class="plan-price">
+            <span class="cop">180.000 <small>COP</small></span>
+            <span class="usd" data-cop="180000">≈ USD</span>
+          </div>
+          <span class="maint-per">/ mes</span>
+          <ul class="plan-features" style="margin-top:18px;">
+            <li>Cambios ilimitados razonables</li>
+            <li>Nuevas secciones pequeñas</li>
+            <li>Optimización continua</li>
+            <li>Productos ilimitados</li>
+            <li>Monitoreo del sitio</li>
+            <li>Soporte prioritario</li>
+            <li>Reunión mensual</li>
+          </ul>
+          <a href="#" class="btn btn-ghost" data-wa-msg="Hola Axon Labs, me interesa el plan de mantenimiento Enterprise (180.000 COP/mes).">Quiero este plan</a>
+        </div>
+      </div>
+
+      <p class="stats-note reveal" style="margin-top:32px;">* Referencia de mercado: planes de mantenimiento equivalentes suelen costar entre $50 y $300+ USD al mes.</p>
+    </div>
+  </section>
+
+  <!-- ============ REFERIDOS ============ -->
+  <section id="referidos">
+    <div class="container">
+      <div class="referral-box reveal">
+        <span class="plan-emoji" style="margin:0 auto 12px;">🎁</span>
+        <h3>Programa de referidos</h3>
+        <p>Si nos recomiendas y el referido se convierte en cliente, tú ganas.</p>
+        <ul>
+          <li>✅ 1 cliente referido = 10% de descuento en tu siguiente mensualidad de mantenimiento.</li>
+          <li>✅ Descuento máximo acumulable: 30%.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta-final reveal">
+        <span class="eyebrow" style="justify-content:center;">Empecemos</span>
+        <h2 style="margin-top:16px;">¿Cuál paquete se ajusta a lo que necesitas?</h2>
+        <p>Agenda una reunión y te ayudamos a elegir el correcto, sin compromiso.</p>
+        <a href="contacto.html#agendar" class="btn btn-primary">Agendar una reunión</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo-mark-alpha.png" alt="Axon Labs">
+        <p>Estudio de desarrollo de software a medida. Construimos productos digitales que ayudan a empresas a vender más, automatizar procesos y crecer.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navegación</h5>
+        <ul><li><a href="index.html">Inicio</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="planes.html">Planes</a></li><li><a href="portafolio.html">Portafolio</a></li><li><a href="nosotros.html">Nosotros</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h5>Empresa</h5>
+        <ul><li><a href="nosotros.html#proceso">Proceso</a></li><li><a href="faq.html">Preguntas frecuentes</a></li><li><a href="contacto.html">Contacto</a></li></ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contacto</h5>
+        <ul><li><a href="mailto:info@axonlabs.site">info@axonlabs.site</a></li><li><a href="https://wa.me/593964073557" target="_blank" rel="noopener">WhatsApp Business</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Axon Labs. Todos los derechos reservados.</span>
+      <div class="footer-social">
+        <a href="https://wa.me/593964073557" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-5.4A8.5 8.5 0 1 1 21 11.5Z"/></svg></a>
+        <a href="mailto:info@axonlabs.site" aria-label="Correo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="js/main.js"></script>
+<script src="js/pricing.js"></script>
+</body>
+</html>
