@@ -24,12 +24,42 @@ const els = {
 };
 
 let editingId = null;
+let toastTimer = null;
+
+/* Evita que una operación se quede "colgada" para siempre si Firestore
+   no responde (reglas mal configuradas, red bloqueada, base de datos
+   no creada, etc.). Sin esto, un problema de conexión deja el botón
+   en "Guardando..." indefinidamente sin ningún aviso. */
+function withTimeout(promise, ms, timeoutMessage){
+  var timeoutId;
+  var timeout = new Promise(function(_, reject){
+    timeoutId = setTimeout(function(){ reject(new Error(timeoutMessage)); }, ms);
+  });
+  return Promise.race([promise, timeout]).finally(function(){ clearTimeout(timeoutId); });
+}
 
 function toast(msg, ok){
   if(!els.toast) return;
   els.toast.textContent = msg;
   els.toast.className = "toast show " + (ok ? "ok" : "err");
-  setTimeout(function(){ els.toast.className = "toast"; }, 3200);
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ els.toast.className = "toast"; }, ok ? 3200 : 9000);
+}
+
+/* Traduce errores comunes de Firebase a un mensaje accionable */
+function describeError(err){
+  var code = err && err.code;
+  var msg = (err && err.message) || "";
+  if(code === "permission-denied"){
+    return "Firestore rechazó el acceso (permission-denied). Revisa que las reglas de seguridad estén publicadas en Firebase Console y que tu correo esté en la lista de administradores.";
+  }
+  if(code === "unavailable"){
+    return "No se pudo contactar a Firestore (sin conexión o servidor no disponible). Intenta de nuevo en unos segundos.";
+  }
+  if(msg){
+    return msg;
+  }
+  return "No se pudo completar la operación. Revisa la consola del navegador (F12) para más detalle.";
 }
 
 /* ---------- Guarda de acceso ---------- */
@@ -55,13 +85,16 @@ async function loadProjects(){
   els.list.innerHTML = "<p class=\"muted\">Cargando proyectos...</p>";
   try{
     var q = query(collection(db, "projects"), orderBy("order", "asc"));
-    var snap = await getDocs(q);
+    var snap = await withTimeout(
+      getDocs(q), 12000,
+      "Sin respuesta de Firestore tras 12s al cargar los proyectos."
+    );
     var rows = [];
     snap.forEach(function(d){ rows.push({ id: d.id, ...d.data() }); });
     render(rows);
   } catch(err){
-    console.error(err);
-    els.list.innerHTML = "<p class=\"muted\">No se pudieron cargar los proyectos. Revisa la configuración de Firestore.</p>";
+    console.error("Error al cargar proyectos:", err);
+    els.list.innerHTML = "<p class=\"muted\">No se pudieron cargar los proyectos. " + describeError(err) + "</p>";
   }
 }
 
@@ -97,10 +130,15 @@ function render(rows){
     btn.addEventListener("click", function(){
       var id = btn.getAttribute("data-del");
       if(confirm("¿Eliminar este proyecto? Esta acción no se puede deshacer.")){
-        deleteDoc(doc(db, "projects", id)).then(function(){
-          toast("Proyecto eliminado.", true);
-          loadProjects();
-        }).catch(function(){ toast("No se pudo eliminar.", false); });
+        withTimeout(deleteDoc(doc(db, "projects", id)), 12000, "Sin respuesta de Firestore al eliminar.")
+          .then(function(){
+            toast("Proyecto eliminado.", true);
+            loadProjects();
+          })
+          .catch(function(err){
+            console.error("Error al eliminar:", err);
+            toast(describeError(err), false);
+          });
       }
     });
   });
@@ -112,7 +150,11 @@ function escapeHtml(str){
   });
 }
 
-/* ---------- Formulario ---------- */
+/* ---------- Formulario ----------
+   Se referencian los campos por su id (no por form.<name>) porque
+   nombres como "title" chocan con propiedades nativas de los
+   elementos HTML (title = atributo tooltip), lo que antes rompía
+   el guardado de forma silenciosa. */
 const fields = {
   title: document.getElementById("p-title"),
   description: document.getElementById("p-description"),
@@ -170,19 +212,25 @@ if(els.form){
         updatedAt: serverTimestamp()
       };
 
+      if(!data.title){
+        throw new Error("El título es obligatorio.");
+      }
+
+      var timeoutMsg = "Sin respuesta de Firestore tras 12 segundos. Revisa: 1) que existe una base de datos creada en Firebase Console → Firestore Database, 2) que las reglas de seguridad estén publicadas, 3) tu conexión a internet, 4) que ningún bloqueador de anuncios/extensión esté frenando peticiones a *.googleapis.com.";
+
       if(editingId){
-        await updateDoc(doc(db, "projects", editingId), data);
+        await withTimeout(updateDoc(doc(db, "projects", editingId), data), 12000, timeoutMsg);
         toast("Proyecto actualizado.", true);
       } else {
         data.createdAt = serverTimestamp();
-        await addDoc(collection(db, "projects"), data);
+        await withTimeout(addDoc(collection(db, "projects"), data), 12000, timeoutMsg);
         toast("Proyecto creado.", true);
       }
       resetForm();
       loadProjects();
     } catch(err){
-      console.error(err);
-      toast("No se pudo guardar el proyecto.", false);
+      console.error("Error al guardar el proyecto:", err);
+      toast(describeError(err), false);
     } finally {
       els.saveBtn.disabled = false;
       els.saveBtn.textContent = "Guardar proyecto";
