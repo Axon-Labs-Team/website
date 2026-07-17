@@ -5,7 +5,7 @@
    ============================================================ */
 (function(){
   "use strict";
-  var PHONE = "593964073557";
+  var PHONE = "593986473716";
 
   /* Tasa referencial. Actualízala aquí cuando quieras reflejar
      un valor más reciente — todo el resto de la página se
